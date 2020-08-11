@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/greeting",
+            "lambdaFunction": "mygofunc",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "myapi",
+    "apiName": "myapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "mygofunc"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-demogoapp-dev-151323-authRole",
+        "unAuthRoleName": "amplify-demogoapp-dev-151323-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "mygofunc",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

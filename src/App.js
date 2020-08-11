@@ -1,8 +1,18 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {API} from 'aws-amplify';
 
 function App() {
+  const {greeting,setGreeting} = useState('loading');
+  useEffect(()=>{
+    fetchGreeting()
+  },[])
+  async function fetchGreeting(){
+    const greetingData = await API.get('myapi','/greeting')
+    console.log({greetingData})
+    setGreeting(greetingData.message)
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -10,14 +20,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h2>{greeting}</h2>
       </header>
     </div>
   );
